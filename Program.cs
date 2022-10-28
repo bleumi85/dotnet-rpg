@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using dotnet_rpg.Data;
 using dotnet_rpg.Services.CharacterService;
+using dotnet_rpg.Services.CharacterSkillService;
 using dotnet_rpg.Services.WeaponService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -24,6 +25,7 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddScoped<IAuthRepository, AuthRepository>();
     services.AddScoped<ICharacterService, CharacterService>();
     services.AddScoped<IWeaponService, WeaponService>();
+    services.AddScoped<ICharacterSkillService, CharacterSkillService>();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
