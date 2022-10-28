@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
     services.AddControllers();
     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    services.AddScoped<IAuthRepository, AuthRepository>();
     services.AddScoped<ICharacterService, CharacterService>();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     services.AddEndpointsApiExplorer();
