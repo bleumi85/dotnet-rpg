@@ -1,6 +1,9 @@
 using System;
+using dotnet_rpg.Data;
 using dotnet_rpg.Services.CharacterService;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -10,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 {
     var services = builder.Services;
 
+    services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
     services.AddControllers();
     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     services.AddScoped<ICharacterService, CharacterService>();
