@@ -4,6 +4,7 @@ using dotnet_rpg.Data;
 using dotnet_rpg.Services.CharacterService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,7 @@ var builder = WebApplication.CreateBuilder(args);
             ValidateAudience = false
         };
     });
+    services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 }
 
 var app = builder.Build();
