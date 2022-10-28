@@ -1,3 +1,4 @@
+using System;
 using dotnet_rpg.Services.CharacterService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
     var services = builder.Services;
 
     services.AddControllers();
+    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     services.AddScoped<ICharacterService, CharacterService>();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     services.AddEndpointsApiExplorer();
